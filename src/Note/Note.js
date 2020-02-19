@@ -9,7 +9,7 @@ function Note(props){
                 <EachNote 
                     key={item.id} 
                     name={item.name} 
-                    dateMod={item.modified}
+                    modified={item.modified}
                     content={item.content}
                     folderId={item.folderId}
                 />
