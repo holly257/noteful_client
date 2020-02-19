@@ -5,16 +5,24 @@ import Folder from './Folder/Folder'
 import { Router } from 'react-router-dom';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <Header />
-      <main>
-        <Note />
-      </main>
-      <Folder />
-    </div>
-  );
+class App extends React.Component {
+  state= {
+    folders: this.props.store.folders,
+    notes: this.props.store.notes
+  }
+
+  render(){
+    console.log(this.props.store.notes)
+    return (
+      <div className="App">
+        <Header />
+        <main>
+          <Note />
+        </main>
+        <Folder />
+      </div>
+    );
+  }
 }
 
 export default App;
