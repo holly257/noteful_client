@@ -2,7 +2,6 @@ import React from 'react';
 import EachNote from './Notes/EachNote'
 
 function Note(props){
-    console.log(props)
     return(
         <div>
             {props.notes.map(item => 

@@ -1,11 +1,12 @@
 import React from 'react';
 import EachFolder from './EachFolder/EachFolder';
 
-function Folder(){
+function Folder(props){
     return(
         <div>
-            {/* map through and make folder for each */}
-            <EachFolder />
+            {props.folders.map(item =>
+                <EachFolder key={item.id} name={item.name}/>
+            )}
             <button>Add Folder</button>
         </div>
     )

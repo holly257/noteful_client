@@ -12,12 +12,11 @@ class App extends React.Component {
   }
 
   render(){
-    console.log(this.props.store.notes)
     return (
       <div className="App">
         <Header />
         <Note notes={this.state.notes}/>
-        <Folder />
+        <Folder folders={this.state.folders}/>
       </div>
     );
   }

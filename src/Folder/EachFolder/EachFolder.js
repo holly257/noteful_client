@@ -1,9 +1,9 @@
 import React from 'react';
 
-function EachFolder(){
+function EachFolder(props){
     return(
         <div>
-            <p>Folder Number</p>
+            <p>{props.name}</p>
         </div>
     )
 }
