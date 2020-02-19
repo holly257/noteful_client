@@ -1,11 +1,19 @@
 import React from 'react';
 import EachNote from './Notes/EachNote'
 
-function Note(){
+function Note(props){
+    console.log(props)
     return(
         <div>
-            {/* map thorugh and make notes for each props */}
-            <EachNote />
+            {props.notes.map(item => 
+                <EachNote 
+                    key={item.id} 
+                    name={item.name} 
+                    dateMod={item.modified}
+                    content={item.content}
+                    folderId={item.folderId}
+                />
+            )}
             <button>Add Note</button>
         </div>
     )
