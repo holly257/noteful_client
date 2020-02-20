@@ -1,0 +1,12 @@
+.header {
+    font-size: 40px;
+    margin-right: 20vw;
+}
+
+header {
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid black;
+}
