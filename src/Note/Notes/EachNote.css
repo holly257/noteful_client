@@ -1,0 +1,21 @@
+.each-note {
+    border: 1px solid black;
+    margin: 10px;
+}
+
+.note-name {
+    text-align: left;
+    padding-left: 20px;
+}
+
+.date {
+    text-align: left;
+    padding-left: 20px;
+}
+
+.delete-btn {
+    padding: 5px;
+    margin: 7px;
+    margin-top: -30px;
+    float: right;
+}

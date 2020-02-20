@@ -1,9 +1,10 @@
 import React from 'react';
 import EachNote from './Notes/EachNote'
+import './Note.css';
 
 function Note(props){
     return(
-        <div>
+        <div className='note-cont'>
             {props.notes.map(item => 
                 <EachNote 
                     key={item.id} 

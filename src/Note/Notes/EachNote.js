@@ -1,12 +1,14 @@
 import React from 'react';
+import './EachNote.css';
 
 function Notes(props){
     return(
-        <div>
-            <h2>{props.name}</h2>
+        <div className='each-note'>
+            <h2 className='note-name'>{props.name}</h2>
             {/* figure out formatting */}
-            <p>{props.modified}</p>
-            <button>Delete Note</button>
+            <p className='date'>{props.modified}</p>
+            <button className='delete-btn'>Delete Note</button>
+
         </div>
     )
 }
