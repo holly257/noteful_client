@@ -1,9 +1,10 @@
 import React from 'react';
+import './EachFolder.css';
 
 function EachFolder(props){
     return(
-        <div>
-            <p>{props.name}</p>
+        <div className='each-folder-cont'>
+            <h6 className='each-folder'>{props.name}</h6>
         </div>
     )
 }

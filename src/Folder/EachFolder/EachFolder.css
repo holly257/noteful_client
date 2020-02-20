@@ -1,0 +1,14 @@
+.each-folder {
+    border-top: 1px solid black;
+    height: 50px;
+    margin: auto;
+    padding-top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h6:last-of-type {
+    border-bottom: 1px solid black;
+}

@@ -15,8 +15,9 @@ class App extends React.Component {
     return (
       <div className="App">
         <Header />
-        <Note notes={this.state.notes}/>
         <Folder folders={this.state.folders}/>
+        <Note notes={this.state.notes}/>
+        
       </div>
     );
   }

@@ -1,13 +1,14 @@
 import React from 'react';
 import EachFolder from './EachFolder/EachFolder';
+import './Folder.css';
 
 function Folder(props){
     return(
-        <div>
+        <div className='folder-container'>
             {props.folders.map(item =>
                 <EachFolder key={item.id} name={item.name}/>
             )}
-            <button>Add Folder</button>
+            <button className='add-btn'>Add Folder</button>
         </div>
     )
 }

@@ -1,0 +1,15 @@
+.folder-container {
+    width: 30vw;
+    height: 100vh;
+    padding-top: 20px;
+    border: 1px solid black;
+    float: left;
+}
+
+.add-btn {
+    border: 1px solid black;
+    height: 50px;
+    margin: auto;
+    margin: 1vw;
+    width: 28vw;
+}
