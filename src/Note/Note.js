@@ -14,7 +14,7 @@ function Note(props){
                     folderId={item.folderId}
                 />
             )}
-            <button>Add Note</button>
+            <button className='add-note-btn'>Add Note</button>
         </div>
     )
 }

@@ -6,7 +6,7 @@ function Notes(props){
         <div className='each-note'>
             <h2 className='note-name'>{props.name}</h2>
             {/* figure out formatting */}
-            <p className='date'>{props.modified}</p>
+            <p className='date'>Modified on {props.modified}</p>
             <button className='delete-btn'>Delete Note</button>
 
         </div>

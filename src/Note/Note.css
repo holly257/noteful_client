@@ -1,6 +1,12 @@
 .note-cont {
     width: 67vw;
-    height: 100vh;
+    height: 100%;
     padding-top: 20px;
     float: right;
+    border-bottom: 1px solid black;
+}
+
+.add-note-btn {
+    height: 60px;
+    width: 30vw;
 }
