@@ -10,6 +10,7 @@ function Folder(props){
             )}
             <button className='add-btn'>Add Folder</button>
             <button className='back-btn'>Go Back</button>
+            <h4 className='current-folder'>...</h4>
         </div>
     )
 }
