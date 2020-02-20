@@ -9,6 +9,7 @@ function Folder(props){
                 <EachFolder key={item.id} name={item.name}/>
             )}
             <button className='add-btn'>Add Folder</button>
+            <button className='back-btn'>Go Back</button>
         </div>
     )
 }
