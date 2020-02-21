@@ -2,7 +2,7 @@ import React from 'react';
 import Header from './Header';
 import Note from './Note/Note';
 import Folder from './Folder/Folder'
-import { Router } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import './App.css';
 
 class App extends React.Component {
@@ -14,7 +14,8 @@ class App extends React.Component {
   render(){
     return (
       <div className="App">
-        <Header />
+        <Route exact path='/' component={Header} />
+        {/* <Route path='' component={} /> */}
         <Folder folders={this.state.folders}/>
         <Note notes={this.state.notes}/>
         
