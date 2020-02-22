@@ -3,10 +3,11 @@ import EachFolder from './EachFolder/EachFolder';
 import './Folder.css';
 
 function Folder(props){
+    console.log(props)
     return(
         <div className='folder-container'>
             {props.folders.map(item =>
-                <EachFolder key={item.id} name={item.name}/>
+                <EachFolder key={item.id} name={item.name} id={item.id}/>
             )}
             <button className='add-btn'>Add Folder</button>
             <button className='back-btn'>Go Back</button>

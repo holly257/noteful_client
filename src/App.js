@@ -14,9 +14,14 @@ class App extends React.Component {
   render(){
     return (
       <div className="App">
-        <Route exact path='/' component={Header} />
-        {/* <Route path='' component={} /> */}
-        <Folder folders={this.state.folders}/>
+        {/* don't need header route */}
+        <Route path='/' component={Header} />
+
+        {/* side bar changing  */}
+        <Route path='/folder/:id'>
+          <Folder folders={this.state.folders} />
+        </Route>
+        
         <Note notes={this.state.notes}/>
         
       </div>
