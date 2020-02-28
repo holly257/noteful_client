@@ -1,16 +1,35 @@
 import React from 'react';
 import './EachNote.css';
 
-function Notes(props){
-    return(
-        <div className='each-note'>
-            <h2 className='note-name'>{props.name}</h2>
-            {/* figure out formatting */}
-            <p className='date'>Modified on {props.modified}</p>
-            <button className='delete-btn'>Delete Note</button>
+function formatDate(date) {
+    var monthNames = [
+      "January", "February", "March",
+      "April", "May", "June", "July",
+      "August", "September", "October",
+      "November", "December"
+    ];
+  
+    var day = date.getDate();
+    var monthIndex = date.getMonth();
+    var year = date.getFullYear();
+  
+    return monthNames[monthIndex] + ' ' + day + ', ' + year;
+}
 
-        </div>
-    )
+class Notes extends React.Component{
+    render(){
+        const modified = formatDate(new Date(this.props.modified));
+        return(
+            <div className='each-note'>
+                <h2 className='note-name'>{this.props.name}</h2>
+                {/* figure out formatting */}
+                <p className='date'>Modified on {modified}</p>
+                <button className='delete-btn'>Delete Note</button>
+
+            </div>
+        )
+    }
+    
 }
 
 export default Notes;
