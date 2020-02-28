@@ -10,6 +10,7 @@ function Folder(props){
                 {props.folders.map(item =>
                     <EachFolder key={item.id} name={item.name} id={item.id}/>
                 )}
+                    
                 <button className='add-btn'>Add Folder</button>
                 <button className='back-btn'>Go Back</button>
                 <h4 className='current-folder'>...</h4>

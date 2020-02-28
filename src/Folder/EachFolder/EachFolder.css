@@ -1,4 +1,4 @@
-.each-folder {
+.folder {
     border-top: 1px solid black;
     border-bottom: 1px solid black;;
     height: 50px;
@@ -10,8 +10,15 @@
     justify-content: center;
     align-items: center;
     font-size: 18px;
+    /* color: black; */
+    text-decoration: none;
 }
 
 button {
     font-size: 15px;
+}
+
+.folder.selected {
+    color: rgb(202, 248, 248);
+    background-color: rgb(202, 248, 248);
 }
