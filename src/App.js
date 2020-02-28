@@ -2,6 +2,8 @@ import React from 'react';
 import Header from './Header';
 import Note from './Note/Note';
 import Folder from './Folder/Folder'
+import EachNote from './Note/Notes/EachNote';
+import SelectedNoteFolder from './Folder/selectedNoteFolder';
 import { Route } from 'react-router-dom';
 import './App.css';
 
@@ -41,9 +43,38 @@ class App extends React.Component {
         />
                 
         {/* dynamic note route */}
-        <Route path='/card/noteId'>
-          <Note notes={this.state.notes}/>
-        </Route>
+        <Route 
+          exact 
+          path='/card/:noteId'
+          render={(routeProps) => {
+            const selectedFolderId = this.state.notes.find(
+              note => note.id === routeProps.match.params.noteId
+            ).folderId
+
+            const selectedFolder = this.state.folders.find(
+              folder => folder.id === selectedFolderId
+            )
+            console.log(selectedFolder)
+            return(
+              <SelectedNoteFolder {...selectedFolder} />
+            )
+          }}
+        />
+      
+        <Route 
+          exact
+          path='/card/:noteId'
+          render={(routeProps) => {
+            return(
+              <EachNote 
+                notes={this.state.notes.find(note =>
+                  note.id === routeProps.match.params.id
+                  )}
+              />
+            )
+          }}
+        />
+          
 
       </div>
     );
@@ -52,13 +83,9 @@ class App extends React.Component {
 
 export default App;
 
-
-// every route must have same header plus main section and sidebar section
-
-// main section to fix:
-//    modified date formatting
-//    
-
 // folder route to fix:
-//    display only notes in that folder when clicked
-//    sidebar should display full folder list with selected folder highlighted
+//    sidebar should display selected folder highlighted
+
+// note route to fix:
+//    main section should display currently selected note name, modified date, and content
+//    sidebar should show folder of note currently selected and back button

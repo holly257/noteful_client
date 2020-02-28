@@ -1,11 +1,18 @@
 .each-note {
     border: 1px solid black;
     margin: 10px;
+    overflow: auto;
 }
 
 .note-name {
     text-align: left;
     padding-left: 20px;
+    color: black;
+    font-size: 20px;
+}
+
+.note-name:hover{
+    cursor: pointer;
 }
 
 .date {

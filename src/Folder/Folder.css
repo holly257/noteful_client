@@ -15,17 +15,12 @@
     width: 28vw;
 }
 
-.back-btn {
+.select {
     border: 1px solid black;
     height: 50px;
     margin: auto;
     margin: 1vw;
     width: 28vw;
-    display: none;
-}
-
-.current-folder {
-    display: none;
 }
 
 .folder-header{
@@ -33,4 +28,30 @@
     border: 1px solid black;
     border-top: none;
     margin: 0;
+    text-align: center;
+}
+
+.note-folder{
+    border: 1px solid black;
+    height: 50px;
+    margin: auto;
+    margin: 1vw;
+    width: 30vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.back-btn{
+    width: 26vw;
+    height: 50px;
+    border: 1px solid black;
+    text-align: center;
+    margin: 3px 2vw 3px 3vw;
+    padding-top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: black;
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import './EachNote.css';
+import { Link } from 'react-router-dom'
 
 function formatDate(date) {
     var monthNames = [
@@ -21,11 +22,15 @@ class Notes extends React.Component{
         const modified = formatDate(new Date(this.props.modified));
         return(
             <div className='each-note'>
-                <h2 className='note-name'>{this.props.name}</h2>
+                <Link 
+                    className='note-name'
+                    to={`/card/${this.props.noteId}`}
+                >
+                    {this.props.name}
+                </Link>
                 {/* figure out formatting */}
                 <p className='date'>Modified on {modified}</p>
                 <button className='delete-btn'>Delete Note</button>
-
             </div>
         )
     }
