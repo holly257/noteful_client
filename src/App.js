@@ -14,19 +14,51 @@ class App extends React.Component {
   render(){
     return (
       <div className="App">
-        {/* don't need header route */}
-        <Route path='/' component={Header} />
+        <Header />
 
-        {/* side bar changing  */}
-        <Route path='/folder/:id'>
+        {/* main route - everything shows */}
+        <Route exact path='/'>
+          <Folder folders={this.state.folders} />
+          <Note notes={this.state.notes}/>
+        </Route>
+
+        {/* dynamic folder route  */}
+        <Route exact path='/folder/:id' >
           <Folder folders={this.state.folders} />
         </Route>
-        
-        <Note notes={this.state.notes}/>
-        
+        <Route 
+          exact
+          path='/folder/:id'
+          render={(routeProps) => {
+            return(
+              <Note 
+                notes={this.state.notes.filter(note => 
+                note.folderId === routeProps.match.params.id
+                )}
+              />
+            )
+          }}
+        />
+                
+        {/* dynamic note route */}
+        <Route path='/card/noteId'>
+          <Note notes={this.state.notes}/>
+        </Route>
+
       </div>
     );
   }
 }
 
 export default App;
+
+
+// every route must have same header plus main section and sidebar section
+
+// main section to fix:
+//    modified date formatting
+//    
+
+// folder route to fix:
+//    display only notes in that folder when clicked
+//    sidebar should display full folder list with selected folder highlighted
