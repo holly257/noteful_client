@@ -10,7 +10,7 @@
     justify-content: center;
     align-items: center;
     font-size: 18px;
-    /* color: black; */
+    color: black;
     text-decoration: none;
 }
 
@@ -19,6 +19,5 @@ button {
 }
 
 .folder.selected {
-    color: rgb(202, 248, 248);
     background-color: rgb(202, 248, 248);
 }

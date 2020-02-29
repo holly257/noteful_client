@@ -18,6 +18,7 @@ function formatDate(date) {
 }
 
 class Notes extends React.Component{
+
     render(){
         const modified = formatDate(new Date(this.props.modified));
         return(
@@ -31,6 +32,7 @@ class Notes extends React.Component{
                 {/* figure out formatting */}
                 <p className='date'>Modified on {modified}</p>
                 <button className='delete-btn'>Delete Note</button>
+        <p>{this.props.description ? this.props.description : ''}</p>
             </div>
         )
     }

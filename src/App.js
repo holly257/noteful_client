@@ -25,8 +25,17 @@ class App extends React.Component {
         </Route>
 
         {/* dynamic folder route  */}
-        <Route exact path='/folder/:id' >
-          <Folder folders={this.state.folders} />
+        <Route exact path='/folder/:id' 
+          render={(routeProps) => {
+            return (
+              <Folder 
+              folders={this.state.folders} 
+              selected={routeProps.match.params.id}
+              />
+            )
+          }}
+        >
+          
         </Route>
         <Route 
           exact
@@ -65,11 +74,16 @@ class App extends React.Component {
           exact
           path='/card/:noteId'
           render={(routeProps) => {
+            const selectedNote = this.state.notes.find(note =>
+                  note.id === routeProps.match.params.noteId)
             return(
               <EachNote 
-                notes={this.state.notes.find(note =>
-                  note.id === routeProps.match.params.id
-                  )}
+              name={selectedNote.name} 
+              modified={selectedNote.modified}
+              content={selectedNote.content}
+              folderId={selectedNote.folderId}
+              noteId={selectedNote.id}
+              description={selectedNote.content}
               />
             )
           }}

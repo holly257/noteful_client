@@ -11,7 +11,7 @@ class Folder extends React.Component{
                 <div className='folder-container'>
                     {
                     this.props.folders.map(item =>
-                        <EachFolder key={item.id} name={item.name} id={item.id}/>
+                        <EachFolder key={item.id} name={item.name} id={item.id} selected={this.props.selected}/>
                     )}
                         
                     <button className='add-btn'>Add Folder</button>
