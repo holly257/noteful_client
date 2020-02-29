@@ -5,7 +5,9 @@ import Folder from './Folder/Folder'
 import EachNote from './Note/Notes/EachNote';
 import SelectedNoteFolder from './Folder/selectedNoteFolder';
 import { Route } from 'react-router-dom';
+import AppContext from './AppContext';
 import './App.css';
+import EachFolder from './Folder/EachFolder/EachFolder';
 
 class App extends React.Component {
   state= {
@@ -14,92 +16,92 @@ class App extends React.Component {
   }
 
   render(){
+    const contextValue = {
+      folders: this.props.store.folders,
+      notes: this.props.store.notes
+    }
     return (
-      <div className="App">
-        <Header />
-
-        {/* main route - everything shows */}
-        <Route exact path='/'>
-          <Folder folders={this.state.folders} />
-          <Note notes={this.state.notes}/>
-        </Route>
-
-        {/* dynamic folder route  */}
-        <Route exact path='/folder/:id' 
-          render={(routeProps) => {
-            return (
-              <Folder 
-              folders={this.state.folders} 
-              selected={routeProps.match.params.id}
-              />
-            )
-          }}
+      <AppContext.Provider
+          value={contextValue} 
         >
-          
-        </Route>
-        <Route 
-          exact
-          path='/folder/:id'
-          render={(routeProps) => {
-            return(
-              <Note 
-                notes={this.state.notes.filter(note => 
-                note.folderId === routeProps.match.params.id
-                )}
-              />
-            )
-          }}
-        />
-                
-        {/* dynamic note route */}
-        <Route 
-          exact 
-          path='/card/:noteId'
-          render={(routeProps) => {
-            const selectedFolderId = this.state.notes.find(
-              note => note.id === routeProps.match.params.noteId
-            ).folderId
+        <div className="App">
+          <Header />
 
-            const selectedFolder = this.state.folders.find(
-              folder => folder.id === selectedFolderId
-            )
-            console.log(selectedFolder)
-            return(
-              <SelectedNoteFolder {...selectedFolder} />
-            )
-          }}
-        />
-      
-        <Route 
-          exact
-          path='/card/:noteId'
-          render={(routeProps) => {
-            const selectedNote = this.state.notes.find(note =>
-                  note.id === routeProps.match.params.noteId)
-            return(
-              <EachNote 
-              name={selectedNote.name} 
-              modified={selectedNote.modified}
-              content={selectedNote.content}
-              folderId={selectedNote.folderId}
-              noteId={selectedNote.id}
-              description={selectedNote.content}
-              />
-            )
-          }}
-        />
-          
+          {/* main route - everything shows */}
+          <Route exact path='/'>
+            <Folder />
+            <Note />
+          </Route>
 
-      </div>
+          {/* dynamic folder route  */}
+          <Route exact path='/folder/:id' component={Folder}/>
+            
+            {/* render={(routeProps) => { */}
+
+            {/* //   return (
+            //     <Folder  */}
+            {/* //     folders={this.state.folders} 
+            //     selected={routeProps.match.params.id}
+            //     />
+            //   )
+            // }} */}
+         
+          <Route 
+            exact
+            path='/folder/:id'
+            render={(routeProps) => {
+              return(
+                <Note 
+                  notes={this.state.notes.filter(note => 
+                  note.folderId === routeProps.match.params.id
+                  )}
+                />
+              )
+            }}
+          />
+                  
+          {/* dynamic note route */}
+          <Route 
+            exact 
+            path='/card/:noteId'
+            render={(routeProps) => {
+              const selectedFolderId = this.state.notes.find(
+                note => note.id === routeProps.match.params.noteId
+              ).folderId
+
+              const selectedFolder = this.state.folders.find(
+                folder => folder.id === selectedFolderId
+              )
+              console.log(selectedFolder)
+              return(
+                <SelectedNoteFolder {...selectedFolder} />
+                // <EachFolder />
+              )
+            }}
+          />
+        
+          <Route 
+            exact
+            path='/card/:noteId'
+            render={(routeProps) => {
+              const selectedNote = this.state.notes.find(note =>
+                    note.id === routeProps.match.params.noteId)
+              return(
+                <EachNote 
+                name={selectedNote.name} 
+                modified={selectedNote.modified}
+                content={selectedNote.content}
+                folderId={selectedNote.folderId}
+                noteId={selectedNote.id}
+                description={selectedNote.content}
+                />
+              )
+            }}
+          />
+        </div>
+      </AppContext.Provider>
     );
   }
 }
 
 export default App;
-
-// folder route to fix:
-//    sidebar should display selected folder highlighted
-
-// note route to fix:
-//    main section should display currently selected note name, modified date, and content
-//    sidebar should show folder of note currently selected and back button
