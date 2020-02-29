@@ -1,6 +1,7 @@
 import React from 'react';
 import './EachNote.css';
 import { Link } from 'react-router-dom'
+import AppContext from '../../AppContext';
 
 function formatDate(date) {
     var monthNames = [
@@ -18,21 +19,24 @@ function formatDate(date) {
 }
 
 class Notes extends React.Component{
-
+    static contextType = AppContext;
+   
     render(){
-        const modified = formatDate(new Date(this.props.modified));
+        const note = this.context.notes.find(note => note.id === this.props.noteId)
+        const modified = formatDate(new Date(note.modified));
+        console.log(note)
         return(
             <div className='each-note'>
                 <Link 
                     className='note-name'
-                    to={`/card/${this.props.noteId}`}
+                    to={`/card/${note.id}`}
                 >
-                    {this.props.name}
+                    {note.name}
                 </Link>
                 {/* figure out formatting */}
                 <p className='date'>Modified on {modified}</p>
                 <button className='delete-btn'>Delete Note</button>
-                <p className='note-desc'>{this.props.description ? this.props.description : ''}</p>
+                <p className='note-desc'>{note.content ? note.content : ''}</p>
             </div>
         )
     }

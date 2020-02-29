@@ -35,26 +35,14 @@ class App extends React.Component {
 
           {/* dynamic folder route  */}
           <Route exact path='/folder/:id' component={Folder}/>
-            
-            {/* render={(routeProps) => { */}
-
-            {/* //   return (
-            //     <Folder  */}
-            {/* //     folders={this.state.folders} 
-            //     selected={routeProps.match.params.id}
-            //     />
-            //   )
-            // }} */}
-         
+           
           <Route 
             exact
             path='/folder/:id'
             render={(routeProps) => {
               return(
                 <Note 
-                  notes={this.state.notes.filter(note => 
-                  note.folderId === routeProps.match.params.id
-                  )}
+                  folderId={routeProps.match.params.id}
                 />
               )
             }}
@@ -88,12 +76,9 @@ class App extends React.Component {
                     note.id === routeProps.match.params.noteId)
               return(
                 <EachNote 
-                name={selectedNote.name} 
-                modified={selectedNote.modified}
-                content={selectedNote.content}
-                folderId={selectedNote.folderId}
-                noteId={selectedNote.id}
-                description={selectedNote.content}
+                
+                  noteId={selectedNote.id}
+                
                 />
               )
             }}

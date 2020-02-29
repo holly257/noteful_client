@@ -7,7 +7,7 @@ class EachFolder extends React.Component{
     
     static contextType = AppContext;
     render() {
-    const classes = this.props.selected === this.props.id
+    const classes = this.props.selected.id === this.props.id
         ? 'folder selected' : 'folder'
 
         return(

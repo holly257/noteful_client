@@ -19,7 +19,11 @@ class Folder extends React.Component{
                 <div className='folder-container'>
                     {
                     this.context.folders.map(item =>
-                        <EachFolder key={item.id} name={item.name} id={item.id} selected={this.props.match.params}/>
+                        <EachFolder 
+                        key={item.id} 
+                        name={item.name} 
+                        id={item.id} 
+                        selected={this.props.match.params}/>
                     )}
                         
                     <button className='add-btn'>Add Folder</button>
