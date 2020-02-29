@@ -32,7 +32,7 @@ class Notes extends React.Component{
                 {/* figure out formatting */}
                 <p className='date'>Modified on {modified}</p>
                 <button className='delete-btn'>Delete Note</button>
-        <p>{this.props.description ? this.props.description : ''}</p>
+                <p className='note-desc'>{this.props.description ? this.props.description : ''}</p>
             </div>
         )
     }

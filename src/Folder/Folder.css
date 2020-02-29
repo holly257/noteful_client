@@ -34,7 +34,7 @@
 .note-folder{
     border: 1px solid black;
     height: 50px;
-    margin: auto;
+    margin: 0;
     margin: 1vw;
     width: 30vw;
     display: flex;
@@ -55,3 +55,4 @@
     font-size: 16px;
     color: black;
 }
+

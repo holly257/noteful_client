@@ -2,6 +2,8 @@
     border: 1px solid black;
     margin: 10px;
     overflow: auto;
+    width: 65vw;
+    float: right;
 }
 
 .note-name {
@@ -25,4 +27,8 @@
     margin: 7px;
     margin-top: -30px;
     float: right;
+}
+
+.note-desc {
+    padding: 20px;
 }
