@@ -1,14 +1,12 @@
 import React from 'react';
 import store from './store';
-
-import FoldersSidebar from '';
-import NoteSidebar from '';
-import NotesList from '';
-import NotePage from '';
-
+import FoldersSidebar from './Sidebar/FoldersSidebar';
+import NoteSidebar from './Sidebar/NoteSidebar';
+import NotesList from './Notes/NotesList';
+import NotePage from './Notes/NotePage';
 import { Route, Link} from 'react-router-dom';
-import AppContext from './AppContext';
 import './App.css';
+import AppContext from './AppContext';
 
 class App extends React.Component {
   state = store

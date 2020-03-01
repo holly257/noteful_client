@@ -1,38 +1,24 @@
 import React from 'react';
+import Note from './Note';
 import EachNote from './Notes/EachNote'
 import AppContext from '../AppContext';
-import './Note.css';
 
-class Note extends React.Component{
-    static contextType = AppContext;
-
-
+class NoteListMain extends React.Component{
     render(){
-        const filteredNotes = this.props.folderId ? 
-            this.context.notes.filter(note => 
-            note.folderId === this.props.folderId) 
-            : this.context.notes
-        console.log(this.props.folderId)
-        
         return(
-            <>
+            <div className='main'>
                 <h2 className='note-header'>Notes</h2>
-                <div className='note-cont'>
-                    {filteredNotes.map(item => 
-                        <EachNote 
-                            // key={item.id} 
-                            // name={item.name} 
-                            // modified={item.modified}
-                            // content={item.content}
-                            // folderId={item.folderId}
-                            noteId={item.id}
-                        />
-                    )}
-                    <button className='add-note-btn'>Add Note</button>
-                </div>
-            </> 
-        )
+                <ul>
+                    {this.props.notes.map((note) => {
+                        return(
+                            <Note modified={note.modified} key={note.id} id={note.id} name={note.name}/>
+                        )
+                    })}
+                </ul>
+                <button className='add-note-btn'>Add Note</button>
+            </div> 
+        );
     }
 }
 
-export default Note;
+export default NoteListMain;
