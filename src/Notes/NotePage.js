@@ -1,6 +1,6 @@
 import React from 'react';
 import Note from './Note';
-import AppContext from '../../AppContext';
+// import AppContext from '../../AppContext';
 
 
 class NotePage extends React.Component{

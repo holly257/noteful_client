@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import AppContext from '../AppContext';
+// import AppContext from '../AppContext';
 
 class FoldersSidebar extends React.Component{
     render(){

@@ -1,7 +1,6 @@
 import React from 'react';
 import Note from './Note';
-import EachNote from './Notes/EachNote'
-import AppContext from '../AppContext';
+// import AppContext from '../AppContext';
 
 class NoteListMain extends React.Component{
     render(){

@@ -6,7 +6,7 @@ import NotesList from './Notes/NotesList';
 import NotePage from './Notes/NotePage';
 import { Route, Link} from 'react-router-dom';
 import './App.css';
-import AppContext from './AppContext';
+// import AppContext from './AppContext';
 
 class App extends React.Component {
   state = store
