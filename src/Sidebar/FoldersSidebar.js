@@ -12,7 +12,10 @@ class Folder extends React.Component{
     }
     
     static contextType = AppContext;
-    render(){      
+    render(){
+        const classes = this.props.selected.id === this.props.id
+        ? 'folder selected' : 'folder'
+      
         return(
             <>
                 <h2 className='folder-header'>Folders</h2>
@@ -25,7 +28,15 @@ class Folder extends React.Component{
                         id={item.id} 
                         selected={this.props.match.params}/>
                     )}
-                        
+                    <div className='each-folder-cont'>
+                        <Link 
+                            className={classes} 
+                            to={`/folder/${this.props.id}`}
+                            
+                        >
+                            {this.props ? this.props.name : this.context.folders.name}
+                        </Link>
+                </div>    
                     <button className='add-btn'>Add Folder</button>
                 </div>
             </>

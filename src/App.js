@@ -1,10 +1,11 @@
 import React from 'react';
 import store from './store';
-import Header from './Header';
-import Note from './Note/Note';
-import Folder from './Folder/Folder'
-import EachNote from './Note/Notes/EachNote';
-import SelectedNoteFolder from './Folder/selectedNoteFolder';
+
+import FoldersSidebar from '';
+import NoteSidebar from '';
+import NotesList from '';
+import NotePage from '';
+
 import { Route, Link} from 'react-router-dom';
 import AppContext from './AppContext';
 import './App.css';
