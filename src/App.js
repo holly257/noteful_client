@@ -33,14 +33,14 @@ class App extends React.Component {
             exact
             path='/folders/:folderId'
             render={(props) =>
-              <FoldersSidebar fodlers={this.state.folders} selected={props.match.params.folderId} />
+              <FoldersSidebar folders={this.state.folders} selected={props.match.params.folderId} />
             }
           />
 
           {/* Note Route */}
           <Route 
             exact 
-            path='notes/:noteId'
+            path='/notes/:noteId'
             render={(props) => {
               const selectedFolderId = this.state.notes.find(
                 note => note.id === props.match.params.noteId
@@ -83,7 +83,7 @@ class App extends React.Component {
           {/* Note Route */}
           <Route 
             exact
-            path=''
+            path='/notes/:noteId'
             render={(props) => {
               const seletedNote = this.state.notes.find(
                 note => note.id === props.match.params.noteId

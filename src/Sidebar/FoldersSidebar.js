@@ -15,7 +15,7 @@ class FoldersSidebar extends React.Component{
                         return(
                             <li key={folder.id}>
                                 <Link 
-                                    className='classes' 
+                                    className={classes} 
                                     to={`/folders/${folder.id}`}
                                 >
                                     {folder.name}

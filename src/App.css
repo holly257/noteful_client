@@ -1,14 +1,62 @@
-.app-header {
-    font-size: 40px;
-    margin-right: 20vw;
-    text-decoration: none;
-    color: black;
+.app {
+    text-align: center;
 }
 
-header {
-    height: 20vh;
+.app-header {
+    background-color: #282c34;
+    min-height: 10vh;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    border-bottom: 1px solid black;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+  
+.app-header a {
+    color: white;
+}
+ 
+.sidebar {
+    box-sizing: border-box;
+    width: 20%;
+    display: inline-block;
+    float: left;
+    text-align: left;
+    padding: 1rem;
+    padding-bottom: 2rem;
+    border: 2px solid lightgray;
+    min-height: 80vh;
+}
+  
+.main {
+    box-sizing: border-box;
+    padding: 1rem;
+    padding-left: 3rem;
+    width: 66%;
+    display: inline-block;
+    float: left;
+    text-align: left;
+}
+  
+.main ul {
+    list-style: none;
+    padding: 0;
+}
+  
+.note {
+    display: block;
+    box-sizing: border-box;
+    padding: .5rem;
+    margin-bottom: .5rem;
+    border: 1px solid lightgray;
+}
+  
+.folder.selected {
+    color: rgb(37, 182, 126);
+    font-weight: bold;
+}
+
+a{
+    color: #282c34;
 }

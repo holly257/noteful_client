@@ -4,10 +4,11 @@ import { Link } from 'react-router-dom';
 
 class EachFolder extends React.Component{
     render() {
+        console.log(this.props)
         return(
             <div className='sidebar'>
                 <Link to={`/`}>Go Back</Link>
-                <h2>Current Folder: {this.props.name}</h2>
+                <h2 className='folder selected'>{this.props.name}</h2>
             </div>
         );
     }
