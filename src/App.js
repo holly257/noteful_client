@@ -25,49 +25,38 @@ class App extends React.Component {
             <h1><Link to={'/'}>Noteful</Link></h1>
           </header>
 
+          {/* Nav Routes */}
           <div className='sidebar-nav'>
-            {/* Nav Routes */}
             <Route
               exact
               path='/'
-              component={FoldersSidebar}
-            />
-
+              component={FoldersSidebar}/>
             <Route 
               exact
               path='/folders/:folderId'
-              component={FoldersSidebar}
-            />
-
+              component={FoldersSidebar}/>
             <Route 
               exact 
               path='/notes/:noteId'
-              component={NoteSidebar}
-            />
+              component={NoteSidebar}/>
 
             {/* add add folder and add note routes */}
           </div>
 
+          {/* Main/Note Routes */}
           <main>
-            {/* Main/Note Routes */}
             <Route 
               exact
               path='/'
-              component={NotesList}
-            />
-
+              component={NotesList}/>
             <Route 
               exact
               path='/folders/:folderId'
-              component={NotesList}
-            />
-
+              component={NotesList}/>
             <Route 
               exact
               path='/notes/:noteId'
-              component={NotePage}
-            />
-
+              component={NotePage}/>
           </main>
         </div>
       </AppContext.Provider>

@@ -11,7 +11,8 @@ class NoteListMain extends React.Component{
     static contextType = AppContext;
 
     render(){
-        const filteredNotes = this.context.notes.filter(
+        const filteredNotes = !this.props.match.params.folderId 
+            ? this.context.notes : this.context.notes.filter(
             note => note.folderId === this.props.match.params.folderId)
         return(
             <div className='main'>
