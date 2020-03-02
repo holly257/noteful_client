@@ -39,8 +39,8 @@ class App extends React.Component {
               exact 
               path='/notes/:noteId'
               component={NoteSidebar}/>
-
-            {/* add add folder and add note routes */}
+            <Route path='/add-folder' component={NoteSidebar} />
+            <Route path='/add-note' component={NoteSidebar} />
           </div>
 
           {/* Main/Note Routes */}

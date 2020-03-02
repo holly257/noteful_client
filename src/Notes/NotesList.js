@@ -24,7 +24,7 @@ class NoteListMain extends React.Component{
                         )
                     })}
                 </ul>
-                <button className='add-note-btn'>Add Note</button>
+                <Link className='add-note-btn' to='/add-note'>Add Note</Link>
             </div> 
         );
     }

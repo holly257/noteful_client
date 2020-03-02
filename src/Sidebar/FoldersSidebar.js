@@ -32,7 +32,7 @@ class FoldersSidebar extends React.Component{
                         )
                     })}
                 </ul>
-                <button>New Folder</button>
+                <Link to='/add-folder'>New Folder</Link>
             </div>
         );
     }           
