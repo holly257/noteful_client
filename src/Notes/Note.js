@@ -24,8 +24,10 @@ class Note extends React.Component {
     static contextType = AppContext;
 
     handleClickDelete = event => {
-        event.preventDefault
-        fetch(apiEndpoint, {
+        event.preventDefault()
+        const noteId = this.props.id
+
+        fetch(`http://localhost:9090/notes/${noteId}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json'
@@ -40,16 +42,16 @@ class Note extends React.Component {
             return res.json()
         })
         .then(() => {
-
+            this.context.deleteNote(noteId)
+            this.props.onDeleteNote(noteId)
         })
         .catch(error => {
-            console.error(error)
+            console.error({error})
         })
     }
 
     render() {
         const modified = formatDate(new Date(this.props.modified));
-        console.log(modified)
         return (
         <li className="note">
             <Link to={`/notes/${this.props.id}`}>{this.props.name}</Link>

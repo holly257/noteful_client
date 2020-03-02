@@ -1,5 +1,4 @@
 import React from 'react';
-import store from './store';
 import FoldersSidebar from './Sidebar/FoldersSidebar';
 import NoteSidebar from './Sidebar/NoteSidebar';
 import NotesList from './Notes/NotesList';
@@ -14,26 +13,27 @@ class App extends React.Component {
     folders: []
   }
 
-  componentDidMount{
+  componentDidMount() {
     Promise.all([
-      fetch(`${}/notes`)
-      fetch(`${}/folders`)
+      fetch('http://localhost:9090/notes'),
+      fetch('http://localhost:9090/folders')
     ])
       .then(([notesRes, foldersRes]) => {
         if(!notesRes.ok)
-          return
+          throw new Error('Note fetch failed')
         if (!foldersRes.ok)
-          return 
+          throw new Error('Folders fetch failed')
+        return Promise.all([notesRes.json(), foldersRes.json()])
       })
       .then(([notes, folders]) => {
         this.setState({notes, folders});
       })
       .catch(error => {
-        // why console.error?
         console.error({error});
       })
   }
 
+  // keeps client up to date with delete on server
   handleDeleteNote = noteId => {
     this.setState({
       notes: this.state.notes.filter(

@@ -1,5 +1,6 @@
 import React from 'react';
 import Note from './Note';
+import { Link } from 'react-router-dom'
 import AppContext from '../AppContext';
 
 class NoteListMain extends React.Component{
