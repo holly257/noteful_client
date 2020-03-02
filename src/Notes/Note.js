@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import AppContext from '../AppContext';
 
 function formatDate(date) {
     var monthNames = [
@@ -17,6 +18,34 @@ function formatDate(date) {
 }
 
 class Note extends React.Component {
+    static defaultProps = {
+        onDeleteNote: () => {},
+    }
+    static contextType = AppContext;
+
+    handleClickDelete = event => {
+        event.preventDefault
+        fetch(apiEndpoint, {
+            method: 'DELETE',
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+        .then(res => {
+            if (!res.ok) {
+                return res.json().then(error => {
+                    throw error
+                })
+            }
+            return res.json()
+        })
+        .then(() => {
+
+        })
+        .catch(error => {
+            console.error(error)
+        })
+    }
 
     render() {
         const modified = formatDate(new Date(this.props.modified));
@@ -27,7 +56,7 @@ class Note extends React.Component {
             <div>
             <p>Last modified: {modified}</p>
 
-            <button>Delete Note</button>
+            <button onClick={this.handleClickDelete}>Delete Note</button>
             </div>
         </li>
         );

@@ -9,7 +9,38 @@ import './App.css';
 import AppContext from './AppContext';
 
 class App extends React.Component {
-  state = store
+  state = {
+    notes: [],
+    folders: []
+  }
+
+  componentDidMount{
+    Promise.all([
+      fetch(`${}/notes`)
+      fetch(`${}/folders`)
+    ])
+      .then(([notesRes, foldersRes]) => {
+        if(!notesRes.ok)
+          return
+        if (!foldersRes.ok)
+          return 
+      })
+      .then(([notes, folders]) => {
+        this.setState({notes, folders});
+      })
+      .catch(error => {
+        // why console.error?
+        console.error({error});
+      })
+  }
+
+  handleDeleteNote = noteId => {
+    this.setState({
+      notes: this.state.notes.filter(
+        note => note.id !== noteId)
+    });
+  };
+
 
   render(){
     const value = {

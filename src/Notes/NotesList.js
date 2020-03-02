@@ -20,7 +20,11 @@ class NoteListMain extends React.Component{
                 <ul>
                     {filteredNotes.map((note) => {
                         return(
-                            <Note modified={note.modified} key={note.id} id={note.id} name={note.name}/>
+                            <Note 
+                                modified={note.modified} 
+                                key={note.id} id={note.id} 
+                                name={note.name}
+                            />
                         )
                     })}
                 </ul>
