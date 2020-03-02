@@ -20,7 +20,6 @@
 .sidebar {
     box-sizing: border-box;
     width: 20%;
-    display: inline-block;
     float: left;
     text-align: left;
     padding: 1rem;
@@ -34,12 +33,11 @@
     padding: 1rem;
     padding-left: 3rem;
     width: 66%;
-    display: inline-block;
     float: left;
     text-align: left;
 }
   
-.main ul {
+ul {
     list-style: none;
     padding: 0;
 }

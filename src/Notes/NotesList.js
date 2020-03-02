@@ -1,14 +1,23 @@
 import React from 'react';
 import Note from './Note';
-// import AppContext from '../AppContext';
+import AppContext from '../AppContext';
 
 class NoteListMain extends React.Component{
+    static defaultProps = {
+        match: {
+            params: {}
+        }
+    }
+    static contextType = AppContext;
+
     render(){
+        const filteredNotes = this.context.notes.filter(
+            note => note.folderId === this.props.match.params.folderId)
         return(
             <div className='main'>
                 <h2 className='note-header'>Notes</h2>
                 <ul>
-                    {this.props.notes.map((note) => {
+                    {filteredNotes.map((note) => {
                         return(
                             <Note modified={note.modified} key={note.id} id={note.id} name={note.name}/>
                         )

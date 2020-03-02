@@ -1,15 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import AppContext from '../AppContext';
+import AppContext from '../AppContext';
 
 class FoldersSidebar extends React.Component{
+    static defaultProps = {
+        match: {
+            params: {}
+        }
+    }
+    static contextType = AppContext;
+
     render(){
+
         return(
             <div className='sidebar'>
                 <h2 className='folder-header'>Folders</h2>
                 <ul>
-                    {this.props.folders.map((folder) => {
-                        const classes = this.props.selected === folder.id
+                    {this.context.folders.map((folder) => {
+                        const classes = this.props.match.params.folderId === folder.id
                             ? 'folder selected' : 'folder'
                         
                         return(

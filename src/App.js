@@ -6,97 +6,71 @@ import NotesList from './Notes/NotesList';
 import NotePage from './Notes/NotePage';
 import { Route, Link} from 'react-router-dom';
 import './App.css';
-// import AppContext from './AppContext';
+import AppContext from './AppContext';
 
 class App extends React.Component {
   state = store
 
   render(){
+    const value = {
+      notes: this.state.notes,
+      folders: this.state.folders,
+      deleteNote: this.handleDeleteNote
+    };
+
     return (
-      <div className='app'>
-        <header className='app-header'>
-          <h1><Link to={'/'}>Noteful</Link></h1>
-        </header>
+      <AppContext.Provider value={value}>
+        <div className='app'>
+          <header className='app-header'>
+            <h1><Link to={'/'}>Noteful</Link></h1>
+          </header>
 
-        <div className='sidebar-nav'>
-          {/* Main route */}
-          <Route
-            exact
-            path='/'
-            render={() =>
-              <FoldersSidebar folders={this.state.folders} />
-            }
-          />
+          <div className='sidebar-nav'>
+            {/* Nav Routes */}
+            <Route
+              exact
+              path='/'
+              component={FoldersSidebar}
+            />
 
-          {/* Folder route */}
-          <Route 
-            exact
-            path='/folders/:folderId'
-            render={(props) =>
-              <FoldersSidebar folders={this.state.folders} selected={props.match.params.folderId} />
-            }
-          />
+            <Route 
+              exact
+              path='/folders/:folderId'
+              component={FoldersSidebar}
+            />
 
-          {/* Note Route */}
-          <Route 
-            exact 
-            path='/notes/:noteId'
-            render={(props) => {
-              const selectedFolderId = this.state.notes.find(
-                note => note.id === props.match.params.noteId
-              ).folderId
-              const selectedFolder = this.state.folders.find(
-                folder => folder.id === selectedFolderId
-              )
-              return (
-                <NoteSidebar {...selectedFolder}/>
-              )
-            }}
-          />
+            <Route 
+              exact 
+              path='/notes/:noteId'
+              component={NoteSidebar}
+            />
+
+            {/* add add folder and add note routes */}
+          </div>
+
+          <main>
+            {/* Main/Note Routes */}
+            <Route 
+              exact
+              path='/'
+              component={NotesList}
+            />
+
+            <Route 
+              exact
+              path='/folders/:folderId'
+              component={NotesList}
+            />
+
+            <Route 
+              exact
+              path='/notes/:noteId'
+              component={NotePage}
+            />
+
+          </main>
         </div>
-
-        <main>
-          {/* Main Route */}
-          <Route 
-            exact
-            path='/'
-            render={() =>
-              <NotesList notes={this.state.notes} />
-            }
-          />
-
-          {/* Folder Route */}
-          <Route 
-            exact
-            path='/folders/:folderId'
-            render={(props) => {
-              return (
-                <NotesList 
-                  notes={this.state.notes.filter(
-                    note => note.folderId === props.match.params.folderId
-                  )}
-                />
-              )
-            }}
-          />
-
-          {/* Note Route */}
-          <Route 
-            exact
-            path='/notes/:noteId'
-            render={(props) => {
-              const seletedNote = this.state.notes.find(
-                note => note.id === props.match.params.noteId
-              )
-
-              return (
-                <NotePage {...seletedNote}/>
-              )
-            }}
-          />
-
-        </main>
-      </div>
+      </AppContext.Provider>
     );
   }
 }
