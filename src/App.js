@@ -6,6 +6,8 @@ import NotePage from './Notes/NotePage';
 import { Route, Link} from 'react-router-dom';
 import './App.css';
 import AppContext from './AppContext';
+import AddFolder from './AddFolder';
+import AddNote from './AddNote';
 
 class App extends React.Component {
   state = {
@@ -41,12 +43,25 @@ class App extends React.Component {
     });
   };
 
+  handleAddFolder = newFolder => {
+    this.setState({
+      folders: [...this.state.folders, newFolder]
+    });
+  };
+
+  handleAddNotes = newNote => {
+    this.setState({
+      notes: [...this.state.notes, newNote]
+    });
+  };
 
   render(){
     const value = {
       notes: this.state.notes,
       folders: this.state.folders,
-      deleteNote: this.handleDeleteNote
+      deleteNote: this.handleDeleteNote,
+      addFolder: this.handleAddFolder,
+      addNote: this.handleAddNotes
     };
 
     return (
@@ -70,8 +85,8 @@ class App extends React.Component {
               exact 
               path='/notes/:noteId'
               component={NoteSidebar}/>
-            <Route path='/add-folder' component={NoteSidebar} />
-            <Route path='/add-note' component={NoteSidebar} />
+            <Route path='/add-folder' component={AddFolder} />
+            <Route path='/add-note' component={AddNote} />
           </div>
 
           {/* Main/Note Routes */}
