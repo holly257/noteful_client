@@ -18,6 +18,7 @@ class NoteListMain extends React.Component{
         return(
             <div className='main'>
                 <h2 className='note-header'>Notes</h2>
+                <Link className='add-note-btn' to='/add-note'>Add Note</Link>
                 <ul>
                     {filteredNotes.map((note) => {
                         return(
@@ -29,7 +30,6 @@ class NoteListMain extends React.Component{
                         )
                     })}
                 </ul>
-                <Link className='add-note-btn' to='/add-note'>Add Note</Link>
             </div> 
         );
     }
