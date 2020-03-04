@@ -8,7 +8,7 @@ class AddFolder extends React.Component{
     static contextType = AppContext;
 
     state = {
-
+        name: '',
     }
 
     handleFolderSubmit = event => {
@@ -45,6 +45,13 @@ class AddFolder extends React.Component{
         })
     }
 
+    validateFolder = () => {
+        let folderName = this.state.name
+        if(this.context.folders.find(folder => folder.name === folderName)){
+            return ('Folder name already exists. Please choose another name.')
+        } 
+    }
+
     render(){
         return(
             <form className='add-form' onSubmit={e => this.handleFolderSubmit(e)}>
@@ -60,6 +67,7 @@ class AddFolder extends React.Component{
                         value={this.state.name}
                         onChange={e => this.updateName(e.target.value)}
                     />
+                    <p>{this.validateFolder()}</p>
                 </div>
                 <br/>
                 <button className='add-btn'>Add</button>
