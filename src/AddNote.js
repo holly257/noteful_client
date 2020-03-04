@@ -60,6 +60,13 @@ class AddNote extends React.Component{
         })
     }
 
+    validateFolderSelected = () => {
+        let folderId = this.state.folderId
+        if(folderId === ''){
+            return 'Please select a folder.'
+        }
+    }
+
     render(){
         return(
             <form className='add-form' onSubmit={e => this.handleNoteSubmit(e)}>
@@ -101,7 +108,9 @@ class AddNote extends React.Component{
                                     </option>
                         })
                         }
+                        
                     </select>
+                    <p id='select-folder-err'>{this.validateFolderSelected()}</p>
                 </div>
                 <br/>
                 <button className='add-btn'>Add</button>

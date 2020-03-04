@@ -62,3 +62,7 @@ a{
 .add-note-btn{
     color: rgb(37, 182, 126);
 }
+
+#select-folder-err{
+    color: rgb(121, 121, 121);
+}
