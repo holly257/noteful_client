@@ -8,6 +8,7 @@ import './App.css';
 import AppContext from './AppContext';
 import AddFolder from './AddFolder';
 import AddNote from './AddNote';
+import LoadError from './Errors/LoadError';
 
 class App extends React.Component {
   state = {
@@ -67,43 +68,45 @@ class App extends React.Component {
     return (
       <AppContext.Provider value={value}>
         <div className='app'>
-          <header className='app-header'>
-            <h1><Link to={'/'}>Noteful</Link></h1>
-          </header>
+          <LoadError>
+            <header className='app-header'>
+              <h1><Link to={'/'}>Noteful</Link></h1>
+            </header>
 
-          {/* Nav Routes */}
-          <div className='sidebar-nav'>
-            <Route
-              exact
-              path='/'
-              component={FoldersSidebar}/>
-            <Route 
-              exact
-              path='/folders/:folderId'
-              component={FoldersSidebar}/>
-            <Route 
-              exact 
-              path='/notes/:noteId'
-              component={NoteSidebar}/>
-            <Route path='/add-folder' component={AddFolder} />
-            <Route path='/add-note' component={AddNote} />
-          </div>
+            {/* Nav Routes */}
+            <div className='sidebar-nav'>
+              <Route
+                exact
+                path='/'
+                component={FoldersSidebar}/>
+              <Route 
+                exact
+                path='/folders/:folderId'
+                component={FoldersSidebar}/>
+              <Route 
+                exact 
+                path='/notes/:noteId'
+                component={NoteSidebar}/>
+              <Route path='/add-folder' component={AddFolder} />
+              <Route path='/add-note' component={AddNote} />
+            </div>
 
-          {/* Main/Note Routes */}
-          <main>
-            <Route 
-              exact
-              path='/'
-              component={NotesList}/>
-            <Route 
-              exact
-              path='/folders/:folderId'
-              component={NotesList}/>
-            <Route 
-              exact
-              path='/notes/:noteId'
-              component={NotePage}/>
-          </main>
+            {/* Main/Note Routes */}
+            <main>
+              <Route 
+                exact
+                path='/'
+                component={NotesList}/>
+              <Route 
+                exact
+                path='/folders/:folderId'
+                component={NotesList}/>
+              <Route 
+                exact
+                path='/notes/:noteId'
+                component={NotePage}/>
+            </main>
+            </LoadError>
         </div>
       </AppContext.Provider>
     );
