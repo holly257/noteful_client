@@ -17,12 +17,15 @@ class AddNote extends React.Component{
         event.preventDefault()
         console.log('submitted')
 
+        const newNote = this.state
+        newNote.modified = new Date().toISOString()
+
         fetch(`http://localhost:9090/notes`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(this.state)
+            body: JSON.stringify(newNote)
         })
         .then(res => {
             if (!res.ok) {
@@ -38,8 +41,8 @@ class AddNote extends React.Component{
 
         })
         .catch(error => {
-            console.error({error})
-            this.setState(() => { throw error; });
+            console.error(error)
+            this.setState({ error: 'The note did not add. Please try again later.' });
         })
     }
 
@@ -115,6 +118,7 @@ class AddNote extends React.Component{
                 </div>
                 <br/>
                 <button className='add-btn'>Add</button>
+                <h3>{this.state.error}</h3>
             </form>
         )
     }

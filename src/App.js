@@ -7,7 +7,6 @@ import NotePage from './Notes/NotePage';
 import AppContext from './AppContext';
 import AddFolder from './AddFolder';
 import AddNote from './AddNote';
-import FormSubmitError from './Errors/FormSubmitError';
 import './App.css';
 
 class App extends React.Component {
@@ -32,7 +31,8 @@ class App extends React.Component {
         this.setState({notes, folders});
       })
       .catch(error => {
-        this.setState(() => { throw error; });
+        console.error(error)
+        this.setState({ error: 'Something went wrong. Please try again later' });
       })
   }
 
@@ -70,7 +70,7 @@ class App extends React.Component {
           <header className='app-header'>
             <h1><Link to={'/'}>Noteful</Link></h1>
           </header>
-
+          <h3>{this.state.error}</h3>
           {/* Nav Routes */}
           <div className='sidebar-nav'>
             <Route
@@ -85,11 +85,8 @@ class App extends React.Component {
               exact 
               path='/notes/:noteId'
               component={NoteSidebar}/>
-
-            <FormSubmitError>
-              <Route path='/add-folder' component={AddFolder} />
-              <Route path='/add-note' component={AddNote} />
-            </FormSubmitError>
+            <Route path='/add-folder' component={AddFolder} />
+            <Route path='/add-note' component={AddNote} />
           </div>
 
           {/* Main/Note Routes */}

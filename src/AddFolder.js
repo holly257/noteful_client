@@ -36,7 +36,7 @@ class AddFolder extends React.Component{
         })
         .catch(error => {
             console.error(error)
-            this.setState(() => { throw error; });
+            this.setState({ error: 'The folder did not add. Please try again later.' });
         })
     }
 
@@ -72,6 +72,7 @@ class AddFolder extends React.Component{
                 </div>
                 <br/>
                 <button className='add-btn'>Add</button>
+                <h3>{this.state.error}</h3>
             </form>
         )
     }
