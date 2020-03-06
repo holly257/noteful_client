@@ -35,7 +35,8 @@ class AddFolder extends React.Component{
             this.props.history.goBack()
         })
         .catch(error => {
-            console.error({error})
+            console.error(error)
+            this.setState(() => { throw error; });
         })
     }
 
@@ -74,8 +75,6 @@ class AddFolder extends React.Component{
             </form>
         )
     }
-
-
 }
 
 export default AddFolder;

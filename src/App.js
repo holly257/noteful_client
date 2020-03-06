@@ -1,15 +1,14 @@
 import React from 'react';
+import { Route, Link} from 'react-router-dom';
 import FoldersSidebar from './Sidebar/FoldersSidebar';
 import NoteSidebar from './Sidebar/NoteSidebar';
 import NotesList from './Notes/NotesList';
 import NotePage from './Notes/NotePage';
-import { Route, Link} from 'react-router-dom';
-import './App.css';
 import AppContext from './AppContext';
 import AddFolder from './AddFolder';
 import AddNote from './AddNote';
-import LoadError from './Errors/LoadError';
 import FormSubmitError from './Errors/FormSubmitError';
+import './App.css';
 
 class App extends React.Component {
   state = {
@@ -33,12 +32,10 @@ class App extends React.Component {
         this.setState({notes, folders});
       })
       .catch(error => {
-        console.error({error})
-        throw new Error('Error');
+        this.setState(() => { throw error; });
       })
   }
 
-  // keeps client up to date with delete on server
   handleDeleteNote = noteId => {
     this.setState({
       notes: this.state.notes.filter(
@@ -70,52 +67,46 @@ class App extends React.Component {
     return (
       <AppContext.Provider value={value}>
         <div className='app'>
-          {/* <LoadError> */}
-            <header className='app-header'>
-              <h1><Link to={'/'}>Noteful</Link></h1>
-            </header>
+          <header className='app-header'>
+            <h1><Link to={'/'}>Noteful</Link></h1>
+          </header>
 
-            {/* Nav Routes */}
-            <div className='sidebar-nav'>
-              <LoadError>
-                <Route
-                  exact
-                  path='/'
-                  component={FoldersSidebar}/>
-                <Route 
-                  exact
-                  path='/folders/:folderId'
-                  component={FoldersSidebar}/>
-                <Route 
-                  exact 
-                  path='/notes/:noteId'
-                  component={NoteSidebar}/>
-              </LoadError>
+          {/* Nav Routes */}
+          <div className='sidebar-nav'>
+            <Route
+              exact
+              path='/'
+              component={FoldersSidebar}/>
+            <Route 
+              exact
+              path='/folders/:folderId'
+              component={FoldersSidebar}/>
+            <Route 
+              exact 
+              path='/notes/:noteId'
+              component={NoteSidebar}/>
 
-              <FormSubmitError>
-                <Route path='/add-folder' component={AddFolder} />
-                <Route path='/add-note' component={AddNote} />
-              </FormSubmitError>
-            </div>
+            <FormSubmitError>
+              <Route path='/add-folder' component={AddFolder} />
+              <Route path='/add-note' component={AddNote} />
+            </FormSubmitError>
+          </div>
 
-            {/* Main/Note Routes */}
-            <main>
-              <LoadError>
-                <Route 
-                  exact
-                  path='/'
-                  component={NotesList}/>
-                <Route 
-                  exact
-                  path='/folders/:folderId'
-                  component={NotesList}/>
-                <Route 
-                  exact
-                  path='/notes/:noteId'
-                  component={NotePage}/>
-              </LoadError>
-            </main>
-            {/* </LoadError> */}
+          {/* Main/Note Routes */}
+          <main>
+            <Route 
+              exact
+              path='/'
+              component={NotesList}/>
+            <Route 
+              exact
+              path='/folders/:folderId'
+              component={NotesList}/>
+            <Route 
+              exact
+              path='/notes/:noteId'
+              component={NotePage}/>
+          </main>
         </div>
       </AppContext.Provider>
     );

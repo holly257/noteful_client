@@ -2,7 +2,6 @@ import React from 'react';
 import Note from './Note';
 import AppContext from '../AppContext';
 
-
 class NotePage extends React.Component{
     static defaultProps = {
         match: {
@@ -26,8 +25,7 @@ class NotePage extends React.Component{
                 <p>{selectedNote.content}</p>
             </div>
         );
-    }
-    
+    }  
 }
 
 export default NotePage;

@@ -39,6 +39,7 @@ class AddNote extends React.Component{
         })
         .catch(error => {
             console.error({error})
+            this.setState(() => { throw error; });
         })
     }
 
@@ -117,8 +118,6 @@ class AddNote extends React.Component{
             </form>
         )
     }
-
-
 }
 
 export default AddNote;

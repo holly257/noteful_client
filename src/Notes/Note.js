@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import AppContext from '../AppContext';
+import PropTypes from 'prop-types';
 
 function formatDate(date) {
     var monthNames = [
@@ -46,6 +47,7 @@ class Note extends React.Component {
         })
         .catch(error => {
             console.error({error})
+            this.setState(() => { throw error; });
         })
     }
 
@@ -62,6 +64,10 @@ class Note extends React.Component {
         </li>
         );
     }
+}
+
+Note.propTypes = {
+    name: PropTypes.string.isRequired,
 }
 
 export default Note;
