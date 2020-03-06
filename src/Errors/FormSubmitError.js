@@ -20,7 +20,6 @@ class FormSubmitError extends React.Component{
                     <h2>Sorry, something seems to have gone wrong.</h2>
                     <p>Please try again.</p>
                 </>
-                
             );
         }
         return this.props.children;

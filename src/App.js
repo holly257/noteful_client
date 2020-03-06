@@ -9,6 +9,7 @@ import AppContext from './AppContext';
 import AddFolder from './AddFolder';
 import AddNote from './AddNote';
 import LoadError from './Errors/LoadError';
+import FormSubmitError from './Errors/FormSubmitError';
 
 class App extends React.Component {
   state = {
@@ -32,7 +33,8 @@ class App extends React.Component {
         this.setState({notes, folders});
       })
       .catch(error => {
-        console.error({error});
+        console.error({error})
+        throw new Error('Error');
       })
   }
 
@@ -68,45 +70,52 @@ class App extends React.Component {
     return (
       <AppContext.Provider value={value}>
         <div className='app'>
-          <LoadError>
+          {/* <LoadError> */}
             <header className='app-header'>
               <h1><Link to={'/'}>Noteful</Link></h1>
             </header>
 
             {/* Nav Routes */}
             <div className='sidebar-nav'>
-              <Route
-                exact
-                path='/'
-                component={FoldersSidebar}/>
-              <Route 
-                exact
-                path='/folders/:folderId'
-                component={FoldersSidebar}/>
-              <Route 
-                exact 
-                path='/notes/:noteId'
-                component={NoteSidebar}/>
-              <Route path='/add-folder' component={AddFolder} />
-              <Route path='/add-note' component={AddNote} />
+              <LoadError>
+                <Route
+                  exact
+                  path='/'
+                  component={FoldersSidebar}/>
+                <Route 
+                  exact
+                  path='/folders/:folderId'
+                  component={FoldersSidebar}/>
+                <Route 
+                  exact 
+                  path='/notes/:noteId'
+                  component={NoteSidebar}/>
+              </LoadError>
+
+              <FormSubmitError>
+                <Route path='/add-folder' component={AddFolder} />
+                <Route path='/add-note' component={AddNote} />
+              </FormSubmitError>
             </div>
 
             {/* Main/Note Routes */}
             <main>
-              <Route 
-                exact
-                path='/'
-                component={NotesList}/>
-              <Route 
-                exact
-                path='/folders/:folderId'
-                component={NotesList}/>
-              <Route 
-                exact
-                path='/notes/:noteId'
-                component={NotePage}/>
+              <LoadError>
+                <Route 
+                  exact
+                  path='/'
+                  component={NotesList}/>
+                <Route 
+                  exact
+                  path='/folders/:folderId'
+                  component={NotesList}/>
+                <Route 
+                  exact
+                  path='/notes/:noteId'
+                  component={NotePage}/>
+              </LoadError>
             </main>
-            </LoadError>
+            {/* </LoadError> */}
         </div>
       </AppContext.Provider>
     );

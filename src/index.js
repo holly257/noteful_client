@@ -4,5 +4,6 @@ import './index.css';
 import App from './App';
 import store from './store';
 import { BrowserRouter } from 'react-router-dom';
+import LoadError from './Errors/LoadError';
 
-ReactDOM.render(<BrowserRouter><App store={store}/></BrowserRouter>, document.getElementById('root'));
+ReactDOM.render(<BrowserRouter><LoadError><App store={store}/></LoadError></BrowserRouter>, document.getElementById('root'));
