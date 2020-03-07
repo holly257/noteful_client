@@ -61,6 +61,7 @@ class AddFolder extends React.Component{
                     <label htmlFor='name'>Folder Name: </label>
                     <input
                         required
+                        aria-required='true'
                         type='text'
                         className='add-folder'
                         name='name'

@@ -79,6 +79,7 @@ class AddNote extends React.Component{
                     <label htmlFor='name'>Note Name: </label>
                     <input
                         required
+                        aria-required='true'
                         type='text'
                         className='add-folder'
                         name='name'
@@ -91,6 +92,7 @@ class AddNote extends React.Component{
                     <label htmlFor='content'>Note Content: </label>
                     <input
                         required
+                        aria-required='true'
                         type='text'
                         className='content'
                         name='content'
@@ -101,7 +103,7 @@ class AddNote extends React.Component{
                 </div>
                 <div>
                     <label htmlFor='folder-name'>Select Folder: </label>
-                    <select onChange={e => this.updateFolderSelect(e.target.value)}>
+                    <select onChange={e => this.updateFolderSelect(e.target.value)} aria-describedby='select-folder-err'>
                         <option value=''>Please Select</option>
                         {this.context.folders.map(folder =>{
                             return <option 
