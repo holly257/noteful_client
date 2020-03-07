@@ -68,3 +68,29 @@ a{
 #select-folder-err{
     color: rgb(121, 121, 121);
 }
+
+button:hover{
+    cursor: pointer;
+}
+
+@media(max-width: 600px){
+    *{
+        font-size: small;
+    }
+
+    .sidebar {
+        width: 30%;
+    }
+
+    .main{
+        padding-left: 20px;
+    }
+    input {
+        border: 1px solid darkgray;
+        margin-bottom: 2px;
+    }
+
+    select {
+        border: 1px solid darkgray;
+    }
+}
