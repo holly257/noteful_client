@@ -103,7 +103,7 @@ class AddNote extends React.Component{
                 </div>
                 <div>
                     <label htmlFor='folder-name'>Select Folder: </label>
-                    <select onChange={e => this.updateFolderSelect(e.target.value)} aria-describedby='select-folder-err'>
+                    <select required onChange={e => this.updateFolderSelect(e.target.value)} aria-describedby='select-folder-err'>
                         <option value=''>Please Select</option>
                         {this.context.folders.map(folder =>{
                             return <option 
