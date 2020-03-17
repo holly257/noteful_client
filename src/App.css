@@ -73,6 +73,17 @@ button:hover{
     cursor: pointer;
 }
 
+#note-deleted {
+    margin-top: 150px;
+    color: rgb(33, 175, 149);
+    font-size: large;
+    font-weight: 600;
+}
+
+#header {
+    font-size: large;
+}
+
 @media(max-width: 600px){
     *{
         font-size: small;
@@ -92,5 +103,9 @@ button:hover{
 
     select {
         border: 1px solid darkgray;
+    }
+
+    #note-deleted{
+        font-size: 20px;
     }
 }

@@ -68,7 +68,7 @@ class App extends React.Component {
       <AppContext.Provider value={value}>
         <div className='app'>
           <header className='app-header'>
-            <h1><Link to={'/'}>Noteful</Link></h1>
+            <h1><Link id='header' to={'/'}>Noteful</Link></h1>
           </header>
           <h3>{this.state.error}</h3>
           {/* Nav Routes */}

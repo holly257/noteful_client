@@ -29,7 +29,9 @@ class NotePage extends React.Component{
             );
         }
         else {
-            return <Redirect to='/'/>
+            return(
+                <div id='note-deleted'>Deleted Successfully</div>
+            ) 
         }
     }  
 }
