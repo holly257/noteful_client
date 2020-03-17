@@ -44,6 +44,7 @@ class Note extends React.Component {
         })
         .then(() => {
             this.context.deleteNote(noteId)
+            this.props.history.goBack()
         })
         .catch(error => {
             console.error({error})

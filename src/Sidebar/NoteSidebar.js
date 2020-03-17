@@ -15,14 +15,14 @@ class EachFolder extends React.Component{
     render() {
         console.log(this.props)
         const selectedFolderId = this.context.notes.find(
-            note => note.id === this.props.match.params.noteId).folderId
+            note => note.id === this.props.match.params.noteId)?.folderId
             const selectedFolder = this.context.folders.find(
             folder => folder.id === selectedFolderId
             )
         return(
             <div className='sidebar'>
                 <button onClick={() => this.props.history.goBack()}>Go Back</button>
-                <h2 className='folder selected'>{selectedFolder.name}</h2>
+                <h2 className='folder selected'>{selectedFolder ? selectedFolder.name : ''}</h2>
             </div>
         );
     }
