@@ -3,7 +3,7 @@
 }
 
 .app-header {
-    background-color: #282c34;
+    background-color: #36383d;
     min-height: 10vh;
     display: flex;
     flex-direction: column;
@@ -81,7 +81,7 @@ button:hover{
 }
 
 #header {
-    font-size: large;
+    font-size: 50px;
 }
 
 @media(max-width: 600px){
@@ -107,5 +107,9 @@ button:hover{
 
     #note-deleted{
         font-size: 20px;
+    }
+
+    #header{
+        font-size: 25px;
     }
 }
