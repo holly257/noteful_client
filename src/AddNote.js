@@ -20,7 +20,7 @@ class AddNote extends React.Component{
         const newNote = this.state
         newNote.modified = new Date().toISOString()
 
-        fetch(`http://localhost:9090/notes`, {
+        fetch(`http://localhost:8000/api/notes`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

@@ -14,7 +14,7 @@ class NotePage extends React.Component{
     render(){
 
         const selectedNote = this.context.notes.find(
-            note => note.id === this.props.match.params.noteId)
+            note => note.id === +this.props.match.params.noteId)
         
         if (selectedNote) {
             return(

@@ -14,7 +14,7 @@ class NoteListMain extends React.Component{
     render(){
         const filteredNotes = !this.props.match.params.folderId 
             ? this.context.notes : this.context.notes.filter(
-            note => note.folderId === this.props.match.params.folderId)
+            note => note.folderId === +this.props.match.params.folderId)
         return(
             <div className='main'>
                 <h2 className='note-header'>Notes</h2>

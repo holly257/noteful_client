@@ -28,7 +28,7 @@ class Note extends React.Component {
         event.preventDefault()
         const noteId = this.props.id
 
-        fetch(`http://localhost:9090/notes/${noteId}`, {
+        fetch(`http://localhost:8000/api/notes/${noteId}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json'
@@ -40,11 +40,10 @@ class Note extends React.Component {
                     throw error
                 })
             }
-            return res.json()
+            return 
         })
         .then(() => {
             this.context.deleteNote(noteId)
-            this.props.history.goBack()
         })
         .catch(error => {
             console.error({error})
